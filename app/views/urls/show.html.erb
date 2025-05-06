@@ -1,0 +1,12 @@
+<%# app/views/urls/show.html.erb %>
+<p style="color: green"><%= notice %></p>
+
+<%# Esta linha renderiza o conteúdo do arquivo _url.html.erb %>
+<%= render @url %>
+
+<div>
+  <%= link_to "Editar esta URL", edit_url_path(@url) %> | <%# Traduzido %>
+  <%= link_to "Voltar para URLs", urls_path %> <%# Traduzido %>
+
+  <%= button_to "Excluir esta URL", @url, method: :delete %> <%# Traduzido %>
+</div>

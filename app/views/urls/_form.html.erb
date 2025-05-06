@@ -1,0 +1,44 @@
+<%# app/views/urls/_form.html.erb %>
+<%= form_with(model: url) do |form| %>
+  <%# Bloco para exibir erros de validação, caso existam %>
+  <% if url.errors.any? %>
+    <div style="color: red">
+      <h2><%= pluralize(url.errors.count, "erro") %> impediu que esta URL fosse salva:</h2> <%# Traduzido 'error' %>
+
+      <ul>
+        <% url.errors.each do |error| %>
+          <li><%= error.full_message %></li>
+        <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <%# --- Campo para a URL Original (Permanece) --- %>
+  <div>
+    <%= form.label :original_url, "URL Original", style: "display: block" %> <%# Adicionado texto ao label %>
+    <%= form.textarea :original_url, rows: 3, placeholder: "https://www.exemplo.com/pagina/longa/demais" %> <%# Adicionado placeholder e rows %>
+  </div>
+
+  <%# --- Campo para Short Code (REMOVIDO) --- %>
+  <%# O short_code agora é gerado automaticamente no model %>
+  <%#
+  <div>
+    <%= form.label :short_code, style: "display: block" %>
+    <%#= form.text_field :short_code %>
+  <%# </div>
+  %>
+
+  <%# --- Campo para Clicks (REMOVIDO) --- %>
+  <%# O contador de cliques é atualizado automaticamente no redirecionamento %>
+  <%#
+  <div>
+    <%= form.label :clicks, style: "display: block" %>
+    <%#= form.number_field :clicks %>
+  <%# </div>
+  %>
+
+  <%# --- Botão de Envio (Permanece) --- %>
+  <div>
+    <%= form.submit "Encurtar URL" %> <%# Alterado texto do botão %>
+  </div>
+<% end %>

@@ -1,0 +1,23 @@
+<%# CÓDIGO ATUALIZADO para app/views/urls/_url.html.erb %>
+<div id="<%= dom_id url %>"> <%# Gera um ID único para este elemento div, útil para CSS/JS %>
+  <p>
+    <strong>URL Original:</strong> <%# Label traduzido %>
+    <%# Mostra a URL original. word-wrap ajuda a quebrar linhas longas %>
+    <span style="word-wrap: break-word;"><%= url.original_url %></span>
+  </p>
+
+  <p>
+    <strong>Link Encurtado:</strong> <%# Label traduzido e mais descritivo %>
+    <%# A linha abaixo cria o link clicável %>
+    <%# Texto do link: url.short_code (ex: "abc123") %>
+    <%# Destino do link: redirect_url(short_code: url.short_code) (ex: http://localhost:3000/abc123) %>
+    <%# target: "_blank" : Abre o link em uma nova aba %>
+    <%= link_to url.short_code, redirect_url(short_code: url.short_code), target: "_blank" %>
+  </p>
+
+  <p>
+    <strong>Cliques:</strong> <%# Label traduzido %>
+    <%= url.clicks %>
+  </p>
+
+</div>
